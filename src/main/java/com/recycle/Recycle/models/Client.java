@@ -1,16 +1,21 @@
 package com.recycle.Recycle.models;
 
 import lombok.*;
-import javax.persistence.Column;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Setter
 @Getter
 @RequiredArgsConstructor
+@Table(name = "client")
 public class Client {
 
     @Id
-    private int clientId;
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(table = "clientId")
+    private Integer clientId;
 
     @Column(table = "firstName")
     private String firstName;
@@ -23,6 +28,6 @@ public class Client {
 
     @Column(table = "email")
     private String email;
-    
+
 
 }

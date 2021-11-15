@@ -1,0 +1,12 @@
+INSERT INTO client VALUES (1,'Leah','Almeida',23,'leah_199@gmail.com');
+INSERT INTO client VALUES (2,'Marlon','Brando',30,'mar_lon_b@gmail.com');
+INSERT INTO client VALUES (3,'Joao','Pedro',42,'jp@gmail.com');
+INSERT INTO client VALUES (4,'Carla','Ohana',23,'carlao@gmail.com');
+INSERT INTO client VALUES (5,'Joaquim','Pereira',21,'jp22@gmail.com');
+INSERT INTO client VALUES (6,'Jaddy','Santos',19,'jaddy123@gmail.com');
+INSERT INTO client VALUES (7,'Jefferson','Thomas',54,'thomas_jefferson145@gmail.com');
+INSERT INTO client VALUES (8,'Albert','Einstein',95,'genius@gmail.com');
+INSERT INTO client VALUES (9,'Jeremias','Costa',23,'je_costa@gmail.com');
+INSERT INTO client VALUES (10,'Caim','Abel',23,'caim_matou_abel@gmail.com');
+INSERT INTO client VALUES (11,'Fernanda','Silva',23,'fesilva78@gmail.com');
+INSERT INTO client VALUES (12,'Carlos','Henrique',23,'ch_alves_21@gmail.com');

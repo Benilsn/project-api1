@@ -5,19 +5,18 @@ import com.recycle.Recycle.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/client")
+@RequestMapping(path = "/client")
 public class ClientController {
 
     @Autowired
     ClientService clientService;
 
-    public ClientController(ClientService clientService){
-        this.clientService = clientService;
+    @GetMapping(path = "/")
+    public List<Client> getAllClients(){
+        return clientService.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Client getById(@PathVariable(value = "{id}") Long id){
-        return clientService.getClientById(id);
-    }
 }

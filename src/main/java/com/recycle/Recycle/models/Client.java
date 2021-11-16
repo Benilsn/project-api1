@@ -1,32 +1,28 @@
 package com.recycle.Recycle.models;
 
-import lombok.*;
-
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
 
-@Setter
-@Getter
-@RequiredArgsConstructor
+@Entity
 @Table(name = "client")
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(table = "clientId")
-    private Long clientId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
-    @Column(table = "firstName")
+    @Column(name = "client_id", unique = true)
+    private Integer clientId;
+
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(table = "lastName")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(table = "age")
+    @Column(name = "age", nullable = false)
     private int age;
 
-    @Column(table = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
 

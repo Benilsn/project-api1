@@ -1,8 +1,10 @@
 package com.recycle.Recycle.models;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
-
+@ToString
 @Entity
 @Table(name = "client")
 public class Client {

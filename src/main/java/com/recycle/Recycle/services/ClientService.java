@@ -18,6 +18,7 @@ public class ClientService {
     public ClientDTO convert(Client c){
 
         ClientDTO clientdto = new ClientDTO();
+
         clientdto.setClientId(c.getClientId());
         clientdto.setFirstName(c.getFirstName());
         clientdto.setLastName(c.getLastName());
@@ -27,15 +28,28 @@ public class ClientService {
     }
 
     public List<ClientDTO> getAll(){
-
         List<ClientDTO> list = new ArrayList<>();
 
-        if (!clientRepository.getAll().isEmpty()){
-            for (Client c : clientRepository.getAll()){
-                list.add(convert(c));
-            }
+        for (Client c : clientRepository.findAll()){
+            list.add(convert(c));
         }
         return list;
+    }
+
+    public ClientDTO getById(Integer id){
+        return convert(clientRepository.getById(id));
+    }
+
+
+    public void addClient(ClientDTO cd){
+        var client = new Client();
+        client.setClientId(cd.getClientId());
+        client.setFirstName(cd.getFirstName());
+        client.setLastName(cd.getLastName());
+        client.setAge(cd.getAge());
+        client.setEmail(cd.getEmail());
+
+        clientRepository.save(client);
     }
 
 }

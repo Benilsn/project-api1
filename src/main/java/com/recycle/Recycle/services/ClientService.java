@@ -5,7 +5,6 @@ import com.recycle.Recycle.models.Client;
 import com.recycle.Recycle.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,37 +12,34 @@ import java.util.List;
 public class ClientService {
 
     @Autowired
-    ClientRepository clientRepository;
+    protected ClientRepository clientRepository;
 
-    public ClientDTO convert(Client c){
+    public ClientDTO findById(Integer id){
+        var client = clientRepository.findById(id);
 
-        ClientDTO clientdto = new ClientDTO();
-
-        clientdto.setClientId(c.getClientId());
-        clientdto.setFirstName(c.getFirstName());
-        clientdto.setLastName(c.getLastName());
-        clientdto.setEmail(c.getEmail());
-
-        return clientdto;
+        if (client.isPresent()){
+            return ClientDTO.convert(client.get());
+        }else{
+            return null;
+        }
     }
 
     public List<ClientDTO> getAll(){
         List<ClientDTO> list = new ArrayList<>();
 
         for (Client c : clientRepository.findAll()){
-            list.add(convert(c));
+            list.add(ClientDTO.convert(c));
         }
         return list;
     }
 
     public ClientDTO getById(Integer id){
-        return convert(clientRepository.getById(id));
+        return ClientDTO.convert(clientRepository.getById(id));
     }
 
-
     public void addClient(ClientDTO cd){
+
         var client = new Client();
-        client.setClientId(cd.getClientId());
         client.setFirstName(cd.getFirstName());
         client.setLastName(cd.getLastName());
         client.setAge(cd.getAge());
@@ -52,4 +48,21 @@ public class ClientService {
         clientRepository.save(client);
     }
 
+    public void deleteById(Integer id){
+        clientRepository.deleteById(id);
+    }
+
+    public void updateById(ClientDTO c){
+
+        var client = clientRepository.findById(c.getClientId()).get();
+
+        client.setClientId(c.getClientId());
+        client.setFirstName(c.getFirstName());
+        client.setLastName(c.getLastName());
+        client.setAge(c.getAge());
+        client.setEmail(c.getEmail());
+
+        clientRepository.save(client);
+
+    }
 }

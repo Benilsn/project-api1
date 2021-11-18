@@ -1,5 +1,6 @@
 package com.recycle.Recycle.DTO;
 
+import com.recycle.Recycle.models.Client;
 import lombok.*;
 
 @Getter
@@ -19,4 +20,15 @@ public class ClientDTO {
 
     private String email;
 
+    public static ClientDTO convert(Client c){
+
+        ClientDTO clientdto = new ClientDTO();
+
+        clientdto.setClientId(c.getClientId());
+        clientdto.setFirstName(c.getFirstName());
+        clientdto.setLastName(c.getLastName());
+        clientdto.setEmail(c.getEmail());
+
+        return clientdto;
+    }
 }

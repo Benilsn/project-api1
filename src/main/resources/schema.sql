@@ -1,8 +1,7 @@
 CREATE TABLE IF NOT EXISTS client (
-  client_id INT NOT NULL,
-  first_name VARCHAR(255),
-  last_name VARCHAR(255),
-  age INT,
-  email VARCHAR(255),
-  CONSTRAINT pk_client PRIMARY KEY (client_id)
+  client_id INT NOT NULL PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  age INT NOT NULL,
+  email VARCHAR(255) NOT NULL
 );

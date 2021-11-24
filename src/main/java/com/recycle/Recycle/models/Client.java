@@ -30,10 +30,14 @@ public class Client  {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "role")
+    private String role;
+
     @Column(name = "userName")
     private String userName;
 
     @Column(name = "userPassword")
     private String userPassword;
+
 
 }

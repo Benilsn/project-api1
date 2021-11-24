@@ -15,7 +15,6 @@ public class RecycleApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RecycleApplication.class, args);
 	}
-
 }
 
 @Configuration

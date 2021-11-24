@@ -11,7 +11,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "client")
-public class Client {
+public class Client  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +30,10 @@ public class Client {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "userName")
+    private String userName;
+
+    @Column(name = "userPassword")
+    private String userPassword;
 
 }

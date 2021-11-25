@@ -1,6 +1,7 @@
 package com.recycle.Recycle.services;
 
 import com.recycle.Recycle.DTO.ClientDTO;
+import com.recycle.Recycle.config.SecurityConfig;
 import com.recycle.Recycle.models.Client;
 import com.recycle.Recycle.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,9 @@ public class ClientService {
         client.setLastName(cd.getLastName());
         client.setAge(cd.getAge());
         client.setEmail(cd.getEmail());
+        client.setRole(cd.getRole());
+        client.setUserName(cd.getUserName());
+        client.setUserPassword(SecurityConfig.hashPassword(cd.getUserPassword()));
 
         clientRepository.save(client);
     }

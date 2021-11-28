@@ -15,13 +15,13 @@ public class ClientService {
     @Autowired
     protected ClientRepository clientRepository;
 
-    public ClientDTO findById(Integer id){
+    public boolean checkIfExists(Integer id){
         var client = clientRepository.findById(id);
 
         if (client.isPresent()){
-            return ClientDTO.convert(client.get());
+            return true;
         }else{
-            return null;
+            return false;
         }
     }
 
@@ -41,13 +41,14 @@ public class ClientService {
     public void addClient(ClientDTO cd){
 
         var client = new Client();
-        client.setFirstName(cd.getFirstName());
-        client.setLastName(cd.getLastName());
+        client.setClient_id(cd.getClient_id());
+        client.setFirst_name(cd.getFirst_name());
+        client.setLast_name(cd.getLast_name());
         client.setAge(cd.getAge());
         client.setEmail(cd.getEmail());
-        client.setRole(cd.getRole());
-        client.setUserName(cd.getUserName());
-        client.setUserPassword(SecurityConfig.hashPassword(cd.getUserPassword()));
+        client.setUser_role(cd.getUser_role());
+        client.setUser_name(cd.getUser_name());
+        client.setUser_password(SecurityConfig.hashPassword(cd.getUser_password()));
 
         clientRepository.save(client);
     }
@@ -58,11 +59,11 @@ public class ClientService {
 
     public void updateById(ClientDTO c){
 
-        var client = clientRepository.findById(c.getClientId()).get();
+        var client = clientRepository.findById(c.getClient_id()).get();
 
-        client.setClientId(c.getClientId());
-        client.setFirstName(c.getFirstName());
-        client.setLastName(c.getLastName());
+        client.setClient_id(c.getClient_id());
+        client.setFirst_name(c.getFirst_name());
+        client.setLast_name(c.getLast_name());
         client.setAge(c.getAge());
         client.setEmail(c.getEmail());
 

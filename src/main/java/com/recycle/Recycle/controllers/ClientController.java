@@ -40,16 +40,14 @@ public class ClientController {
     @PostMapping("/")
     public void addClient(@RequestBody ClientDTO clientDTO){
 
-        if (clientService.findById(clientDTO.getClientId()) == null){
-            clientService.addClient(clientDTO);
-        }else{
-            new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
+
+        clientService.addClient(clientDTO);
+
     }
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Integer id){
-        if (clientService.findById(id) != null){
+        if (clientService.checkIfExists(id)){
             clientService.deleteById(id);
         }else{
             new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -59,7 +57,7 @@ public class ClientController {
     @PutMapping("/{id}")
     public void updateClient(@PathVariable Integer id, @RequestBody ClientDTO c){
 
-        if (clientService.findById(c.getClientId()) != null){
+        if (clientService.checkIfExists(c.getClient_id())){
             clientService.updateById(c);
         }else{
             new ResponseEntity<>(HttpStatus.NOT_FOUND);

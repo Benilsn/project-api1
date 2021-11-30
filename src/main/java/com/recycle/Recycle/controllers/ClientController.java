@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -63,4 +64,14 @@ public class ClientController {
             new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String saveRegisteredClient(){
+        String uri = "http://localhost:4567/register";
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri,String.class);
+
+        return result;
+    }
+
 }

@@ -2,10 +2,12 @@ package com.recycle.Recycle.controllers;
 
 
 import com.recycle.Recycle.DTO.ClientDTO;
+import com.recycle.Recycle.models.Client;
 import com.recycle.Recycle.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -63,15 +65,6 @@ public class ClientController {
         }else{
             new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String saveRegisteredClient(){
-        String uri = "http://localhost:4567/register";
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri,String.class);
-
-        return result;
     }
 
 }
